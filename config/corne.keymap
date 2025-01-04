@@ -19,13 +19,13 @@
             // -----------------------------------------------------------------------------------------
             // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BSPC |
             // | SHFT |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-            // | CTRL |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
+            // | CTRL |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |  \   |
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
 &kp TAB    &kp Q  &kp W  &kp E     &kp R  &kp T        &kp Y          &kp U  &kp I      &kp O    &kp P     &kp RET
 &kp LSHFT  &kp A  &kp S  &kp D     &kp F  &kp G        &kp H          &kp J  &kp K      &kp L    &kp SEMI  &kp SQT
-&kp LCTRL  &kp Z  &kp X  &kp C     &kp V  &kp B        &kp N          &kp M  &kp COMMA  &kp DOT  &kp FSLH  &none
+&kp LCTRL  &kp Z  &kp X  &kp C     &kp V  &kp B        &kp N          &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp BSLH
                          &kp LALT  &sl 1  &kp SPACE    &kp BACKSPACE  &sl 2  &kp RALT
             >;
         };
@@ -40,8 +40,8 @@
             //                    | LALT|     | SPC |   | ENT |     | RALT|
 
             bindings = <
-&gresc  &mt F1 N1   &mt F2 N2     &mt F3 N3     &mt F4 N4     &mt F5 N5      &kp N6       &kp N7    &kp N8    &kp N9     &kp N0  &kp RET
-&trans  &trans      &trans        &trans        &trans        &trans         &kp LEFT     &kp DOWN  &kp UP    &kp RIGHT  &trans  &trans
+&gresc  &kp N1   &kp N2     &kp N3     &kp N4     &kp N5      &kp N6       &kp N7    &kp N8    &kp N9     &kp N0  &kp RET
+&trans  &trans   &trans     &trans     &trans     &trans      &kp LEFT     &kp DOWN  &kp UP    &kp RIGHT  &trans  &trans
 &trans  &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &out OUT_TOG  &bootloader    &bootloader  &trans    &trans    &trans     &trans  &trans
                                   &kp LGUI      &trans        &kp SPACE      &trans       &trans    &kp RALT
             >;
@@ -51,15 +51,15 @@
             display-name = "Raised";
 
             // -----------------------------------------------------------------------------------------
-            // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BSPC |
-            // | SHFT |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-            // | CTRL |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
+            // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  +  |  7  |  8  |  9  |  )  | BSPC |
+            // | SHFT |     |     |     |     |     |   |  -  |  4  |  5  |  6  |  \  |  `   |
+            // | CTRL |     |     |     |     |     |   |  0  |  1  |  2  |  3  | "|" |  ~   |
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp TAB  &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET   &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &trans
-&trans   &trans    &trans  &trans    &trans    &trans       &kp MINUS   &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &kp GRAVE
-&trans   &trans    &trans  &trans    &trans    &trans       &kp UNDER   &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &kp TILDE
+&kp TAB  &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT    &kp PLUS    &mt F7 N7  &mt F8 N8  &mt F9 N9  &mt F10 RPAR  &trans
+&trans   &trans    &trans  &trans    &trans    &trans       &kp MINUS   &mt F4 N4  &mt F5 N5  &mt F6 N6  &mt F11 BSLH  &kp GRAVE
+&trans   &trans    &trans  &trans    &trans    &trans       &kp N1      &mt F1 N1  &mt F2 N2  &mt F3 N3  &mt F12 PIPE  &kp TILDE
                            &kp LALT  &trans    &kp SPACE    &kp DELETE  &trans     &kp RALT
             >;
         };
