@@ -40,8 +40,8 @@
             //                    | LALT|     | SPC |   | ENT |     | RALT|
 
             bindings = <
-&gresc  &kp N1   &kp N2     &kp N3     &kp N4     &kp N5      &kp N6       &kp N7    &kp N8    &kp N9     &kp N0  &kp RET
-&trans  &trans   &trans     &trans     &trans     &trans      &kp LEFT     &kp DOWN  &kp UP    &kp RIGHT  &trans  &trans
+&gresc  &kp N1      &kp N2        &kp N3        &kp N4        &kp N5         &kp N6       &kp N7    &kp N8    &kp N9     &kp N0  &trans
+&trans  &trans      &trans        &trans        &trans        &trans         &kp LEFT     &kp DOWN  &kp UP    &kp RIGHT  &trans  &trans
 &trans  &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &out OUT_TOG  &bootloader    &bootloader  &trans    &trans    &trans     &trans  &trans
                                   &kp LGUI      &trans        &kp SPACE      &trans       &trans    &kp RALT
             >;
@@ -57,10 +57,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp TAB  &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT    &kp PLUS    &mt F7 N7  &mt F8 N8  &mt F9 N9  &mt F10 RPAR  &trans
-&trans   &trans    &trans  &trans    &trans    &trans       &kp MINUS   &mt F4 N4  &mt F5 N5  &mt F6 N6  &mt F11 BSLH  &kp GRAVE
-&trans   &trans    &trans  &trans    &trans    &trans       &kp N1      &mt F1 N1  &mt F2 N2  &mt F3 N3  &mt F12 PIPE  &kp TILDE
-                           &kp LALT  &trans    &kp SPACE    &kp DELETE  &trans     &kp RALT
+&trans  &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT    &kp EQUAL        &mt F7 KP_NUMBER_7  &mt F8 KP_NUMBER_8  &mt F9 KP_NUMBER_9  &mt F10 RPAR  &trans
+&trans  &trans    &trans  &trans    &trans    &trans       &kp MINUS        &mt F4 KP_NUMBER_4  &mt F5 KP_NUMBER_5  &mt F6 KP_NUMBER_6  &mt F11 BSLH  &kp GRAVE
+&trans  &trans    &trans  &trans    &trans    &trans       &kp KP_NUMBER_0  &mt F1 KP_NUMBER_1  &mt F2 KP_NUMBER_2  &mt F3 KP_NUMBER_3  &mt F12 PIPE  &kp TILDE
+                          &kp LALT  &trans    &kp SPACE    &kp DELETE       &trans              &kp RALT
             >;
         };
     };
