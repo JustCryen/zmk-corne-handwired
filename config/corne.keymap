@@ -12,6 +12,48 @@
 &mt { flavor = "tap-preferred"; };
 
 / {
+    combos {
+        compatible = "zmk,combos";
+
+        combo-layer {
+            bindings = <&mo 3>;
+            key-positions = <37 40>;
+        };
+
+        Enter {
+            bindings = <&kp ENTER>;
+            key-positions = <9 10>;
+        };
+    };
+
+    behaviors {
+        hrm_l: hrm_l {
+            compatible = "zmk,behavior-hold-tap";
+            label = "Home Row Mods Left";
+            bindings = <&kp>, <&trans>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            flavor = "tap-preferred";
+            hold-trigger-key-positions = <36 37 38 39 40 41 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 39 40 41>;
+            hold-trigger-on-release;
+        };
+
+        hrm_r: hrm_r {
+            compatible = "zmk,behavior-hold-tap";
+            label = "Home Row Mods Right";
+            bindings = <&kp>, <&trans>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            flavor = "tap-preferred";
+            hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38 39 40 41>;
+            hold-trigger-on-release;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -43,10 +85,12 @@
 
             bindings = <
 &gresc  &kp N1      &kp N2        &kp N3        &kp N4        &kp N5         &kp N6       &kp N7    &kp N8  &kp N9     &kp N0  &trans
-&trans  &trans      &trans        &trans        &trans        &trans         &kp LEFT     &kp DOWN  &kp UP  &kp RIGHT  &trans  &trans
-&trans  &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &out OUT_TOG  &bootloader    &bootloader  &trans    &trans  &trans     &trans  &trans
+&trans  &trans      &trans        &trans        &trans        &trans         &kp LEFT     &kp DOWN  &kp UP  &kp RIGHT  &none   &none
+&trans  &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &out OUT_TOG  &bootloader    &bootloader  &none     &none   &none      &none   &none
                                   &kp LGUI      &trans        &trans         &trans       &trans    &trans
             >;
+
+            label = "Lowered";
         };
 
         raise_layer {
@@ -60,10 +104,41 @@
 
             bindings = <
 &trans  &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT    &kp EQUAL                   &mt F7 KP_NUMBER_7  &mt F8 KP_NUMBER_8  &mt F9 KP_NUMBER_9  &mt F10 RPAR  &trans
-&trans  &trans    &trans  &trans    &trans    &trans       &kp MINUS                   &mt F4 KP_NUMBER_4  &mt F5 KP_NUMBER_5  &mt F6 KP_NUMBER_6  &mt F11 BSLH  &kp GRAVE
-&trans  &trans    &trans  &trans    &trans    &trans       &mt KP_NUMLOCK KP_NUMBER_0  &mt F1 KP_NUMBER_1  &mt F2 KP_NUMBER_2  &mt F3 KP_NUMBER_3  &mt F12 PIPE  &kp TILDE
+&trans  &none     &none   &none     &none     &none        &kp MINUS                   &mt F4 KP_NUMBER_4  &mt F5 KP_NUMBER_5  &mt F6 KP_NUMBER_6  &mt F11 BSLH  &kp GRAVE
+&trans  &none     &none   &none     &none     &none        &mt KP_NUMLOCK KP_NUMBER_0  &mt F1 KP_NUMBER_1  &mt F2 KP_NUMBER_2  &mt F3 KP_NUMBER_3  &mt F12 PIPE  &kp TILDE
                           &trans    &trans    &trans       &kp DELETE                  &trans              &trans
             >;
+        };
+
+        sign_layer {
+            bindings = <
+&trans  &none  &none  &none   &none           &kp LESS_THAN           &kp GREATER_THAN       &none            &none   &none  &none  &trans
+&trans  &none  &none  &none   &kp LEFT_BRACE  &kp LEFT_PARENTHESIS    &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE  &none   &none  &none  &none
+&trans  &none  &none  &none   &none           &kp LEFT_BRACKET        &kp RIGHT_BRACKET      &none            &none   &none  &none  &none
+                      &trans  &trans          &trans                  &trans                 &trans           &trans
+            >;
+
+            label = "Sign";
+        };
+
+        home_row_mods {
+            bindings = <
+&trans  &trans         &trans          &trans           &trans         &trans    &trans  &trans         &trans           &trans          &trans         &trans
+&trans  &hrm_l LGUI 0  &hrm_l LCTRL 0  &hrm_l LSHIFT 0  &hrm_l LALT 0  &trans    &trans  &hrm_r RALT 0  &hrm_r RSHIFT 0  &hrm_r RCTRL 0  &hrm_r RGUI 0  &trans
+&trans  &trans         &trans          &trans           &trans         &trans    &trans  &trans         &trans           &trans          &trans         &trans
+                                       &trans           &trans         &trans    &trans  &trans         &trans
+            >;
+
+            label = "Home Row Mods";
+        };
+    };
+
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        HRM_Base_toggle {
+            if-layers = <0>;
+            then-layer = <4>;
         };
     };
 };
