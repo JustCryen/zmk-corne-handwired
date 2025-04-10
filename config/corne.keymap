@@ -15,11 +15,6 @@
     combos {
         compatible = "zmk,combos";
 
-        combo-layer {
-            bindings = <&mo 3>;
-            key-positions = <37 40>;
-        };
-
         Enter {
             bindings = <&kp ENTER>;
             key-positions = <9 10>;
@@ -110,7 +105,7 @@
             >;
         };
 
-        sign_layer {
+        adjust_layer {
             bindings = <
 &trans  &none  &none  &none   &none           &kp LESS_THAN           &kp GREATER_THAN       &none            &none   &none  &none  &trans
 &trans  &none  &none  &none   &kp LEFT_BRACE  &kp LEFT_PARENTHESIS    &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE  &none   &none  &none  &none
@@ -118,7 +113,7 @@
                       &trans  &trans          &trans                  &trans                 &trans           &trans
             >;
 
-            label = "Sign";
+            label = "Adjust";
         };
 
         home_row_mods {
@@ -139,6 +134,11 @@
         HRM_Base_toggle {
             if-layers = <0>;
             then-layer = <4>;
+        };
+
+        Adjust_layer {
+            if-layers = <1 2>;
+            then-layer = <3>;
         };
     };
 };
