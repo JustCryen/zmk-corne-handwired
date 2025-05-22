@@ -17,7 +17,7 @@
 
         Enter {
             bindings = <&kp ENTER>;
-            key-positions = <9 10>;
+            key-positions = <21 20>;
         };
     };
 
@@ -25,26 +25,26 @@
         hrm_l: hrm_l {
             compatible = "zmk,behavior-hold-tap";
             label = "Home Row Mods Left";
-            bindings = <&kp>, <&trans>;
+            bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
             tapping-term-ms = <280>;
             quick-tap-ms = <175>;
             flavor = "tap-preferred";
-            hold-trigger-key-positions = <36 37 38 39 40 41 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 39 40 41>;
+            hold-trigger-key-positions = <36 37 38 39 40 41 6 7 8 9 10 18 19 20 21 22 30 31 32 33 34 39 40 41>;
             hold-trigger-on-release;
         };
 
         hrm_r: hrm_r {
             compatible = "zmk,behavior-hold-tap";
             label = "Home Row Mods Right";
-            bindings = <&kp>, <&trans>;
+            bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
             tapping-term-ms = <280>;
             quick-tap-ms = <175>;
             flavor = "tap-preferred";
-            hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38 39 40 41>;
+            hold-trigger-key-positions = <1 2 3 4 5 13 14 15 16 17 25 26 27 28 29 36 37 38 39 40 41>;
             hold-trigger-on-release;
         };
     };
@@ -62,10 +62,10 @@
             //                    | LALT| LWR | SPC |   | BSPC| RSE  | RALT|
 
             bindings = <
-&kp TAB    &kp Q  &kp W  &kp E     &kp R  &kp T        &kp Y          &kp U  &kp I      &kp O    &kp P     &kp RET
-&kp LSHFT  &kp A  &kp S  &kp D     &kp F  &kp G        &kp H          &kp J  &kp K      &kp L    &kp SEMI  &kp SQT
-&kp LCTRL  &kp Z  &kp X  &kp C     &kp V  &kp B        &kp N          &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp BSLH
-                         &kp LALT  &sl 1  &kp SPACE    &kp BACKSPACE  &sl 2  &kp RALT
+&kp TAB    &kp Q  &kp W  &kp E     &kp R  &kp T        &kp Y          &kp U          &kp I            &kp O           &kp P             &kp DELETE
+&kp LSHFT  &kp A  &kp S  &kp D     &kp F  &kp G        &kp H          &hrm_r RALT J  &hrm_r RSHIFT K  &hrm_r RCTRL L  &hrm_r RGUI SEMI  &kp SQT
+&kp LCTRL  &kp Z  &kp X  &kp C     &kp V  &kp B        &kp N          &kp M          &kp COMMA        &kp DOT         &kp FSLH          &kp BSLH
+                         &kp LALT  &sl 1  &kp SPACE    &kp BACKSPACE  &sl 2          &kp RALT
             >;
         };
 
@@ -101,7 +101,7 @@
 &trans  &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT    &kp EQUAL                   &mt F7 KP_NUMBER_7  &mt F8 KP_NUMBER_8  &mt F9 KP_NUMBER_9  &mt F10 RPAR  &trans
 &trans  &none     &none   &none     &none     &none        &kp MINUS                   &mt F4 KP_NUMBER_4  &mt F5 KP_NUMBER_5  &mt F6 KP_NUMBER_6  &mt F11 BSLH  &kp GRAVE
 &trans  &none     &none   &none     &none     &none        &mt KP_NUMLOCK KP_NUMBER_0  &mt F1 KP_NUMBER_1  &mt F2 KP_NUMBER_2  &mt F3 KP_NUMBER_3  &mt F12 PIPE  &kp TILDE
-                          &trans    &trans    &trans       &kp DELETE                  &trans              &trans
+                          &trans    &trans    &trans       &trans                      &trans              &trans
             >;
         };
 
@@ -115,26 +115,10 @@
 
             label = "Adjust";
         };
-
-        home_row_mods {
-            bindings = <
-&trans  &trans         &trans          &trans           &trans         &trans    &trans  &trans         &trans           &trans          &trans         &trans
-&trans  &hrm_l LGUI 0  &hrm_l LCTRL 0  &hrm_l LSHIFT 0  &hrm_l LALT 0  &trans    &trans  &hrm_r RALT 0  &hrm_r RSHIFT 0  &hrm_r RCTRL 0  &hrm_r RGUI 0  &trans
-&trans  &trans         &trans          &trans           &trans         &trans    &trans  &trans         &trans           &trans          &trans         &trans
-                                       &trans           &trans         &trans    &trans  &trans         &trans
-            >;
-
-            label = "Home Row Mods";
-        };
     };
 
     conditional_layers {
         compatible = "zmk,conditional-layers";
-
-        HRM_Base_toggle {
-            if-layers = <0>;
-            then-layer = <4>;
-        };
 
         Adjust_layer {
             if-layers = <1 2>;
